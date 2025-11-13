@@ -1,0 +1,13 @@
+USE DATABASE HEALTH_LAKE;
+USE SCHEMA BRONZE_RAW;
+
+-- Standard CSV format for Synthea files
+CREATE OR REPLACE FILE FORMAT CSV_STD
+  TYPE = CSV
+  FIELD_OPTIONALLY_ENCLOSED_BY = '"'
+  SKIP_HEADER = 1
+  NULL_IF = ('NULL','null','');
+
+-- Optional Parquet format (if you convert later)
+CREATE OR REPLACE FILE FORMAT PARQUET_STD
+  TYPE = PARQUET;
